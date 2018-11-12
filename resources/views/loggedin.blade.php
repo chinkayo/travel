@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
       <div class="row middle">
-        <p>you're logged in</p>
+        <p>こんにちわ</p>
       </div>
     </div>
 @endsection
