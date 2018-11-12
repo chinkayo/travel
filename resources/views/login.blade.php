@@ -6,7 +6,7 @@
   <div class="wrapper">
     <form class="form-signin" action="{{route('post_login')}}" method="POST">
       {{ csrf_field() }}
-      <h2 class="form-signin-heading">ログインしてください。</h2>
+      <h2 class="form-signin-heading">ログインください。</h2>
       <input type="text" class="form-control" name="email" placeholder="Email Address" value="{{old('email')}}"/>
       @if ($errors->has('email'))
           <p>{{$errors->first('email')}}</p>
