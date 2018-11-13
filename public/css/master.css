@@ -11,7 +11,7 @@ html body{
 }
 
 .types {
-  height: 40vh;
+  height: 50vh;
   background-image:url('../images/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -118,4 +118,7 @@ input[type="text"]{
 }
 .col-md-6 {
   margin-bottom: 20px;
+}
+.margin-top {
+  margin-top:20px;
 }
