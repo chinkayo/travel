@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\TravelCompany;
 use Validator;
@@ -79,11 +80,7 @@ class TravelController extends Controller
 
         else {
             $event = new Event;
-
-            // TODO 現在登録機能が使えないので、仮のデータを使う。
-            // 本番運用の時に、該当ロジックを変更してください。
-            $event->user_id = 1;
-
+            $event->user_id = Auth::id();
             $event->title = $request->title;
             $event->location_id = $request->location;
             $event->event_type_id = $request->eventtype;
@@ -103,6 +100,7 @@ class TravelController extends Controller
             $domain = strstr($path, 't');
             $event->image = $domain;
             $event->event_status_id = 1;
+            $event->application_status_id = 1;
             $event->save();
 
             return view('travel.insertsuccess');

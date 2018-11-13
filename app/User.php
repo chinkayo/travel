@@ -12,6 +12,6 @@ class User extends Model implements Authenticatable
     protected $table = "users";
     public function events()
     {
-        $this->hasMany(Event::class,'user_id');
+        return $this->hasMany(Event::class,'user_id');
     }
 }

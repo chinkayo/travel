@@ -16,10 +16,10 @@
       <div class="row">
         @foreach ($events as $event)
         <div class="col-3 center">
-          <img src="{{ url('/images/gray.jpg') }}" alt="">
+          <img src="{{'storage/'.$event->image}}" alt="{{$event->title}}">
           <p>{{$event->title}}</p>
-          <p>{{$event->MtbPrefecture->value}}</p>
-          <p>募集状態</p>
+          <p>{{$event->start_date}}から{{$event->finish_date}}まで</p>
+          <p>{{$event->eventStatus->value}}</p>
         </div>
         @endforeach
       </div>
@@ -32,13 +32,18 @@
       <div class="text-center container">
         <h1 class="display-4 type-title">企画タイプ</h1>
         <p class="subtext-2">見たことのない色を、見に行こう</p>
+        <div class="text-center row"> 
+            <div class="col-2"><a href="#"><i class="fa fa-cocktail fa-5x"></i></a></div> 
+            <div class="col-2"><a href="#"></a></div> 
+            <div class="col-2"><a href="#"></a></div> 
+            <div class="col-2"><a href="#"></a></div> 
+            <div class="col-2"><a href="#"></a></div> 
+            <div class="col-2"><a href="#"></a></div> 
+        </div>
         <div class="text-center row">
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
+          @foreach ($eventTypes as $eventType)
+            <div class="col-2"><a href="#">{{$eventType->value}}</a></div>
+          @endforeach 
         </div>
       </div>
       

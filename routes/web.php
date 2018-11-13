@@ -26,9 +26,9 @@ Route::get('/members','UsersController@members')->middleware('auth')->name('memb
 
 //from chen
 
-Route::get('travel/userdetail','TravelController@index');
-Route::get('travel/eventform','TravelController@showform');
-Route::post('travel/insertsuccess','TravelController@insertform');
-Route::get('travel/detailwait','TravelController@showdetailwait');
-Route::get('travel/detailsuccess','TravelController@showdetailsuccess');
-Route::get('travel/detailfailed','TravelController@showdetailfailed');
+Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');
+Route::get('travel/eventform','TravelController@showform')->middleware('auth');
+Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
+Route::get('travel/detailwait','TravelController@showdetailwait')->middleware('auth');
+Route::get('travel/detailsuccess','TravelController@showdetailsuccess')->middleware('auth');
+Route::get('travel/detailfailed','TravelController@showdetailfailed')->middleware('auth');

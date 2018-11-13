@@ -73,7 +73,7 @@
                     <a href="detailsuccess"><button type="button" class="btn btn-default">審査落ち</button></br></br></a>
                     <button type="button" class="btn btn-default">発表済み</button></br></br>
                     <a href="eventform"><button type="button" class="btn btn-info">イベント新規</button></br></br></a>
-                    <button type="button" class="btn btn-danger">ログアウト</button>
+                    <button type="button" class="btn btn-danger"><a href="{{route('logout')}}">ログアウト</a></button>
                 </center>
             </div>
 

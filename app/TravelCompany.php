@@ -9,6 +9,6 @@ class TravelCompany extends Model
     protected $table = "travel_companies";
     public function events()
     {
-        $this->hasMany(Event::class,'company_id');
+        return $this->hasMany(Event::class,'company_id');
     }
 }

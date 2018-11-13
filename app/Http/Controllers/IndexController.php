@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\event;
+use App\MtbEventType;
 
 class IndexController extends Controller
 {
@@ -11,9 +12,11 @@ class IndexController extends Controller
     {
         $events = Event::query()
                         ->where('user_id','1')
+                        ->where('application_status_id','2')
                         ->orderBy('start_apply_date','ASC')
                         ->take(4)
                         ->get();
-        return view('index',['events'=>$events]);
+        $eventTypes = MtbEventType::all();
+        return view('index',['events'=>$events,'eventTypes'=>$eventTypes]);
     }
 }
