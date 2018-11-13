@@ -19,4 +19,8 @@ class IndexController extends Controller
         $eventTypes = MtbEventType::all();
         return view('index',['events'=>$events,'eventTypes'=>$eventTypes]);
     }
+    public function lists(Request $request)
+    {
+        return view('lists');
+    }
 }
