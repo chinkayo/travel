@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\event;
 use App\MtbEventType;
+use App\MtbArea;
+use App\MtbEventStatus;
 
 class IndexController extends Controller
 {
@@ -21,6 +23,14 @@ class IndexController extends Controller
     }
     public function lists(Request $request)
     {
-        return view('lists');
+        $events = Event::query()
+                        ->where('application_status_id','2')
+                        ->paginate(2);
+        $areas = MtbArea::all();
+        $eventTypes = MtbEventType::all();
+        $eventStatuses = MtbEventStatus::query()
+                                        ->take(2)
+                                        ->get();
+        return view('lists',['areas'=>$areas,'eventTypes'=>$eventTypes,'eventStatuses'=>$eventStatuses,'events'=>$events]);
     }
 }
