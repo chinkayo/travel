@@ -1,4 +1,3 @@
-
 @extends("layout.mypage.layout")
 @section("content")
 
@@ -30,6 +29,30 @@
                             <tr>
                                 <th>イベント終了時間</th>
                                 <td>{{$event->finish_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>申し込み開始時間</th>
+                                <td>{{$event->start_apply_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>定員</th>
+                                <td>{{$event->capacity}}</td>
+                            </tr>
+                            <tr>
+                                <th>現在の人数</th>
+                                <td>{{ $event->application_number() }}
+                                    </td>
+                            </tr>
+                            <tr>
+                                <th>イベント募集状態</th>
+                                <td>
+                                    <ul>
+                                        <li>{{ $event->statuses() }}</li>
+                                        <li>申し込み受付中</li>
+                                        <li>人数達成</li>
+                                        <li><a href="#">途中キャンセル</a></li>
+                                    </ul>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

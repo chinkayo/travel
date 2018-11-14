@@ -68,10 +68,10 @@
         <div class="row">
             <div class="col-lg-3" id="buttonlist">
                 <center>
-                    <a href="detailwait"><button type="button" class="btn btn-default">審査待ち</button></br></br></a>
-                    <a href="detailsuccess"><button type="button" class="btn btn-default">審査通過</button></br></br></a>
-                    <a href="detailsuccess"><button type="button" class="btn btn-default">審査落ち</button></br></br></a>
-                    <button type="button" class="btn btn-default">発表済み</button></br></br>
+                    <a href="{{ route('show_detail_status', ['application_statuses_id' =>1]) }}"><button type="button" class="btn btn-default">審査待ち</button></br></br></a>
+                    <a href="{{ route('show_detail_status', ['application_statuses_id' =>2]) }}"><button type="button" class="btn btn-default">審査通過</button></br></br></a>
+                    <a href="{{ route('show_detail_status', ['application_statuses_id' =>3]) }}"><button type="button" class="btn btn-default">審査落ち</button></br></br></a>
+                    <a href="event_statuses"><button type="button" class="btn btn-default">発表済み</button></br></br></a>
                     <a href="eventform"><button type="button" class="btn btn-info">イベント新規</button></br></br></a>
                     <button type="button" class="btn btn-danger">ログアウト</button>
                 </center>
@@ -86,6 +86,6 @@
 
 
         </div>
-    </div>
+    </div></br></br></br>
 </body>
 </html>

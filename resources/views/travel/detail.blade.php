@@ -1,3 +1,4 @@
+
 @extends("layout.mypage.layout")
 @section("content")
 
@@ -40,12 +41,6 @@
         </div>@endforeach
         {{ $events->links() }}
 </div>
-
-
-
-
-
-
 
 
 

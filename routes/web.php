@@ -14,9 +14,8 @@
 Route::get('travel/userdetail','TravelController@index');
 Route::get('travel/eventform','TravelController@showform');
 Route::post('travel/insertsuccess','TravelController@insertform');
-Route::get('travel/detailwait','TravelController@showdetailwait');
-Route::get('travel/detailsuccess','TravelController@showdetailsuccess');
-Route::get('travel/detailfailed','TravelController@showdetailfailed');
+Route::get('travel/event_statuses','TravelController@showevent_statuses');
+Route::get('travel/{application_statuses_id}','TravelController@show_detail')->name("show_detail_status");
 
 //from guo
 Route::get('/index','IndexController@index')->name('index');

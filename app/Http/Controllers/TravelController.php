@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\MtbArea;
 use App\MtbLocation;
 use App\MtbEventType;
+use App\EventMtbApplication;
 
 
 class TravelController extends Controller
@@ -83,6 +84,7 @@ class TravelController extends Controller
             // TODO 現在登録機能が使えないので、仮のデータを使う。
             // 本番運用の時に、該当ロジックを変更してください。
             $event->user_id = 1;
+            $event->application_statuses_id = 1;
 
             $event->title = $request->title;
             $event->location_id = $request->location;
@@ -111,39 +113,24 @@ class TravelController extends Controller
     }
 
 
-    public function showdetailwait(Request $request)
+    public function show_detail(Request $request, $application_statuses_id)
     {
 
-        $events = Event::paginate(4);
-        return view('travel.detailwait',[
-            'events'=>$events,
-        ]);
-    }
-
-
-    public function showdetailsuccess(Request $request)
-    {
-
-        $events = Event::paginate(4);
-        return view('travel.detailsuccess',[
-            'events'=>$events,
-        ]);
-    }
-
-    public function showdetailfailed(Request $request)
-    {
-
-        $events = Event::paginate(4);
-        return view('travel.detailfailed',[
+        $events = Event::query()->where("application_statuses_id",$application_statuses_id)->paginate(3);;
+        return view('travel.detail',[
             'events'=>$events,
         ]);
     }
 
 
 
+    public function showevent_statuses(Request $request)
+    {
 
-
-
-
+        $events = Event::paginate(1);
+        return view('travel.event_statuses',[
+            'events'=>$events,
+        ]);
+    }
 
 }
