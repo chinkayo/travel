@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/index','IndexController@index')->name('index');
-Route::get('/lists','IndexController@lists')->name('lists');
+Route::get('/lists','IndexController@lists')->name('get_lists');
+Route::post('/lists/search','IndexController@search')->name('search');
 Route::get('/signup','UsersController@signup')->name('get_signup');
 Route::post('/signup','UsersController@signup')->name('post_signup');
 Route::get('/verify/{token}','UsersController@verify')->name('verify');

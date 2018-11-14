@@ -5,7 +5,8 @@
 @section('content')
     <section class="wrapper1 style2 alt">
       <div class="container">
-        <form action="#" method="post">
+        <form action="{{route('search')}}" method="post">
+          {{ csrf_field() }}
           <div class="row">
             <input type="text" name="keyword" placeholder="keyword">
           </div>
