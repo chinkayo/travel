@@ -15,11 +15,19 @@
     <div class="container plans">
       <div class="row">
         @foreach ($events as $event)
+<<<<<<< HEAD
         <div class="col-lg-3 center">
           <a href="#"><img src="{{'storage/'.$event->image}}" alt="{{$event->title}}"></a>
           <p>{{$event->title}}</p>
           <p>{{$event->start_date}}から{{$event->finish_date}}まで</p>
           <p>{{$event->eventStatus->value}}</p>
+=======
+        <div class="col-3 center">
+          <img src="{{ url('/images/gray.jpg') }}" alt="">
+          <p>{{$event->title}}</p>
+          <p>{{$event->location->area->value}}</p>
+          <p>募集状態</p>
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
         </div>
         @endforeach
       </div>
@@ -28,6 +36,7 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <div class="types d-flex justify-content-center align-items-center">
       <div class="text-center container">
         <h1 class="display-4 type-title">企画タイプ</h1>
@@ -48,3 +57,21 @@
       </div> 
     </div>    
 @endsection
+=======
+    <div class="types d-flex justify-content-center">
+      <div class="text-center container">
+        <h1 class="display-4 type-title">企画タイプ</h1>
+        <p class="subtext-2">見たことのない色を、見に行こう</p>
+        <div class="text-center row">
+          <div class="col-2"><a href="#">haha</a></div>
+          <div class="col-2"><a href="#">haha</a></div>
+          <div class="col-2"><a href="#">haha</a></div>
+          <div class="col-2"><a href="#">haha</a></div>
+          <div class="col-2"><a href="#">haha</a></div>
+          <div class="col-2"><a href="#">haha</a></div>
+        </div>
+      </div>
+
+    </div>
+@endsection
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03

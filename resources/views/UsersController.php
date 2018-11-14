@@ -93,11 +93,7 @@ class UsersController extends Controller
                 if (Auth::attempt(['email'=>$request->email,
                                    'password'=>$request->password,
                                    'user_status_id'=>2])) {
-<<<<<<< HEAD
-                    return redirect()->route('user_detail');
-=======
                     return redirect()->route('members');
->>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
                 }else {
                     return redirect()->route('get_login');
                 }

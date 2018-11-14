@@ -112,6 +112,10 @@ return [
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
+<<<<<<< HEAD
+=======
+    'uuid' => 'The :attribute must be a valid UUID.',
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
 
     /*
     |--------------------------------------------------------------------------
@@ -135,9 +139,15 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
+<<<<<<< HEAD
     | The following language lines are used to swap attribute place-holders
     | with something more reader friendly such as E-Mail Address instead
     | of "email". This simply helps us make messages a little cleaner.
+=======
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
     |
     */
 

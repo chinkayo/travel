@@ -11,7 +11,11 @@ html body{
 }
 
 .types {
+<<<<<<< HEAD
   height: 50vh;
+=======
+  height: 40vh;
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
   background-image:url('../images/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -118,6 +122,7 @@ input[type="text"]{
 }
 .col-md-6 {
   margin-bottom: 20px;
+<<<<<<< HEAD
 }
 .margin-top {
   margin-top:20px;
@@ -178,4 +183,6 @@ ul.actions {
   cursor: default;
   list-style: none;
   padding-left: 0;
+=======
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
 }

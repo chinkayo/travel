@@ -37,6 +37,10 @@ return [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
+<<<<<<< HEAD
+=======
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
         ],
 
         'mysql' => [
@@ -47,8 +51,13 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
+<<<<<<< HEAD
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
+=======
+            'charset' => 'utf8',
+            'collation' => 'utf8_general_ci',
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     protected $table = "events";
+<<<<<<< HEAD
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
@@ -31,4 +32,12 @@ class Event extends Model
     {
         return $this->belongsTo(MtbApplicationStatus::class,'application_status_id');
     }
+=======
+    public function location()
+   {
+       return $this->belongsTo("App\MtbLocation", "location_id");
+   }
+
+
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
 }

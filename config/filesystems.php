@@ -55,6 +55,11 @@ return [
             'visibility' => 'public',
         ],
 
+<<<<<<< HEAD
+=======
+        
+
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

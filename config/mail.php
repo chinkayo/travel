@@ -57,7 +57,11 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'song.g224@gmail.com'),
+<<<<<<< HEAD
         'name' => env('MAIL_FROM_NAME', 'Email Confirmation'),
+=======
+        'name' => env('MAIL_FROM_NAME', 'Email Verification'),
+>>>>>>> 97d4fdf1118c1d19c038f95711dfe413d9788e03
     ],
 
     /*
