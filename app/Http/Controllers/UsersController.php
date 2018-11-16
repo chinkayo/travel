@@ -93,18 +93,13 @@ class UsersController extends Controller
                 if (Auth::attempt(['email'=>$request->email,
                                    'password'=>$request->password,
                                    'user_status_id'=>2])) {
-                    return redirect()->route('members');
+                    return redirect()->route('userdetail');
                 }else {
                     return redirect()->route('get_login');
                 }
             
             }
         }
-    }
-
-    public function members()
-    {
-        return view('loggedin'); 
     }
 
     public function logout(Request $request)

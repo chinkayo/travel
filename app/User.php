@@ -10,5 +10,9 @@ class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
     protected $table = "users";
+    public function events()
+    {
+        return $this->hasMany(Event::class,'user_id');
+    }
 
 }

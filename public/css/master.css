@@ -11,7 +11,7 @@ html body{
 }
 
 .types {
-  height: 40vh;
+  height: 50vh;
   background-image:url('../images/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -118,4 +118,64 @@ input[type="text"]{
 }
 .col-md-6 {
   margin-bottom: 20px;
+}
+.margin-top {
+  margin-top:20px;
+}
+
+/*lists*/
+.wrapper1 {
+  padding: 5em 0 3em 0;
+  position: relative;
+}
+.wrapper1 > .inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70em;
+  max-width: 100%;
+}
+.wrapper1.alt {
+  border-top: solid 2px;
+  border-top-color: rgba(144, 144, 144, 0.25);
+}
+.wrapper1.style2 {
+  background-color: #fafafa;
+  color: #777;
+}
+.wrapper1.style2 a {
+  color: #00BC8A;
+}
+.wrapper1.style2 h3{
+  color: #666;
+}
+.wrapper1.style2 .button {
+  color: #666 !important;
+}
+.wrapper1.style2 .spotlight {
+  background-color: white;
+  border-bottom-color: rgba(144, 144, 144, 0.25);
+}
+.spotlight {
+  display: flex;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  border-bottom: solid 2px;
+  margin-bottom: 3em;
+}
+.spotlight .content {
+  padding: 2em 3em 0.1em 3em;
+  width: 60%;
+}
+.spotlight .image {
+  width: 40%;
+}
+.spotlight .image img {
+  width: 100%;
+}
+ul.actions {
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
 }
