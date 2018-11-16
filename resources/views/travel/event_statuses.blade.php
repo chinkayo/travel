@@ -46,12 +46,7 @@
                             <tr>
                                 <th>イベント募集状態</th>
                                 <td>
-                                    <ul>
-                                        <li>{{ $event->statuses() }}</li>
-                                        <li>申し込み受付中</li>
-                                        <li>人数達成</li>
-                                        <li><a href="#">途中キャンセル</a></li>
-                                    </ul>
+                                    {{ $event->eventstatus->value }}
                                 </td>
                             </tr>
                             </tbody>

@@ -9,6 +9,6 @@ class MtbEventType extends Model
     protected $table = "mtb_event_types";
     public function events()
     {
-        $this->hasMany(Event::class,'event_type_id');
+        return $this->hasMany("App\Event", "event_type_id");
     }
 }

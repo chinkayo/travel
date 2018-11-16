@@ -13,6 +13,15 @@ class Event extends Model
    {
        return $this->belongsTo("App\MtbLocation", "location_id");
    }
+   public function eventstatus()
+  {
+      return $this->belongsTo("App\MtbEventStatus", "event_status_id");
+  }
+  public function eventtype()
+ {
+     return $this->belongsTo("App\MtbEventType", "event_type_id");
+ }
+
 
    public function application_number()
    {
@@ -20,12 +29,6 @@ class Event extends Model
        return $num;
    }
 
-   public function statuses()
-   {
-       $start_apply_date = Event::query()->whereDate('start_apply_date','<','2018-03-1')->get();
 
-
-       return $start_apply_date;
-   }
 
 }
