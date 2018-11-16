@@ -16,7 +16,7 @@ Route::get('travel/eventdetail','TravelController@show_event_detail')->middlewar
 Route::get('travel/eventform','TravelController@showform')->middleware('auth');
 Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
 Route::get('travel/event_statuses','TravelController@showevent_statuses')->middleware('auth');
-Route::get('travel/{application_statuses_id}','TravelController@show_detail')->middleware('auth')->name("show_detail_status");
+Route::get('travel/{application_status_id}','TravelController@show_detail')->middleware('auth')->name("show_detail_status");
 
 
 Route::get('/index','IndexController@index')->name('index');
