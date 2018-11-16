@@ -15,11 +15,11 @@
     <div class="container plans">
       <div class="row">
         @foreach ($events as $event)
-        <div class="col-3 center">
-          <img src="{{ url('/images/gray.jpg') }}" alt="">
+        <div class="col-lg-3 center">
+          <a href="#"><img src="{{'storage/'.$event->image}}" alt="{{$event->title}}"></a>
           <p>{{$event->title}}</p>
-          <p>{{$event->location->area->value}}</p>
-          <p>募集状態</p>
+          <p>{{$event->start_date}}から{{$event->finish_date}}まで</p>
+          <p>{{$event->eventStatus->value}}</p>
         </div>
         @endforeach
       </div>
@@ -28,19 +28,23 @@
       </div>
     </div>
 
-    <div class="types d-flex justify-content-center">
+    <div class="types d-flex justify-content-center align-items-center">
       <div class="text-center container">
         <h1 class="display-4 type-title">企画タイプ</h1>
         <p class="subtext-2">見たことのない色を、見に行こう</p>
+        <div class="text-center row margin-top">
+            <div class="col-lg-2"><a href="#"><i class="fa fa-venus fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-mountain fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-glass-martini fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-fire fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-globe-asia fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-leaf fa-5x"></i></a></div>
+        </div>
         <div class="text-center row">
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
-          <div class="col-2"><a href="#">haha</a></div>
+          @foreach ($eventTypes as $eventType)
+            <div class="col-lg-2"><a href="#">{{$eventType->value}}</a></div>
+          @endforeach
         </div>
       </div>
-
     </div>
 @endsection

@@ -11,16 +11,17 @@
 |
 */
 
-Route::get('travel/userdetail','TravelController@index');
-Route::get('travel/eventdetail','TravelController@show_event_detail');
-Route::get('travel/eventform','TravelController@showform');
-Route::post('travel/insertsuccess','TravelController@insertform');
-Route::get('travel/event_statuses','TravelController@showevent_statuses');
-Route::get('travel/{application_statuses_id}','TravelController@show_detail')->name("show_detail_status");
+Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');;
+Route::get('travel/eventdetail','TravelController@show_event_detail')->middleware('auth');
+Route::get('travel/eventform','TravelController@showform')->middleware('auth');
+Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
+Route::get('travel/event_statuses','TravelController@showevent_statuses')->middleware('auth');
+Route::get('travel/{application_statuses_id}','TravelController@show_detail')->middleware('auth')->name("show_detail_status");
 
 
-//from guo
 Route::get('/index','IndexController@index')->name('index');
+Route::get('/lists','IndexController@lists')->name('get_lists');
+Route::post('/lists/search','IndexController@search')->name('search');
 Route::get('/signup','UsersController@signup')->name('get_signup');
 Route::post('/signup','UsersController@signup')->name('post_signup');
 Route::get('/verify/{token}','UsersController@verify')->name('verify');

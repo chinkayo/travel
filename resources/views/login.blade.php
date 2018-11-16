@@ -16,7 +16,7 @@
           <p>{{$errors->first('password')}}</p>
       @endif
       <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">記録
       </label>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
     </form>
