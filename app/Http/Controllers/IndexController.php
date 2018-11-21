@@ -7,6 +7,7 @@ use App\event;
 use App\MtbEventType;
 use App\MtbArea;
 use App\MtbEventStatus;
+use Illuminate\Support\Facades\Input;
 use App\MtbLocation;
 
 class IndexController extends Controller
@@ -34,12 +35,25 @@ class IndexController extends Controller
                                         ->get();
         return view('lists',['areas'=>$areas,'eventTypes'=>$eventTypes,'eventStatuses'=>$eventStatuses,'events'=>$events]);
     }
+
     public function search(Request $request)
     {
-        $area_ids = [];
-        $area_ids = $request->input('areas');
-        $locations = MtbLocation::query()
-                                ->where('area_id',$area_ids)
-                                ->get();
+        if (Input::has('areas')) {
+            $area_ids=[];
+            $area_ids=$request->input('areas');
+            $locations = MtbLocation::query()->wherein('area_id',$area_ids)->get();
+            foreach ($locations as $location) {
+                echo $location->id;
+            }
+        }
+        if (Input::has('types')) {
+            $type_ids=[];
+            $type_ids=$request->input('types');
+        }
+        if (Input::has('statuses')) {
+            $status_ids=[];
+            $status_ids=$request->input('statuses');
+        }
+
     }
 }

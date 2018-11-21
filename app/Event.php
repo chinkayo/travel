@@ -15,32 +15,30 @@ class Event extends Model
     }
     public function location()
     {
-       return $this->belongsTo(MtbLocation::class, "location_id");
+       return $this->belongsTo("App\MtbLocation", "location_id");
     }
     public function company()
     {
         return $this->belongsTo(TravelCompany::class,'company_id');
     }
-    public function eventtype()
+    public function eventType()
     {
         return $this->belongsTo(MtbEventType::class,'event_type_id');
     }
-    public function eventstatus()
+    public function eventStatus()
     {
         return $this->belongsTo(MtbEventStatus::class,'event_status_id');
     }
-    public function applicationstatus()
+    public function applicationStatus()
     {
         return $this->belongsTo(MtbApplicationStatus::class,'application_status_id');
     }
 
-
-
-   public function application_number()
-   {
+    public function application_number()
+    {
        $num = EventMtbApplication::query()->where("event_id",$this->id)->count();
        return $num;
-   }
+    }
 
 
 

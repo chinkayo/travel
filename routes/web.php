@@ -20,7 +20,7 @@ Route::get('travel/{application_status_id}','TravelController@show_detail')->mid
 
 
 Route::get('/index','IndexController@index')->name('index');
-Route::get('/lists','IndexController@lists')->name('get_lists');
+Route::get('/lists','IndexController@lists')->name('lists');
 Route::post('/lists/search','IndexController@search')->name('search');
 Route::get('/signup','UsersController@signup')->name('get_signup');
 Route::post('/signup','UsersController@signup')->name('post_signup');
@@ -28,4 +28,3 @@ Route::get('/verify/{token}','UsersController@verify')->name('verify');
 Route::get('/login','UsersController@login')->name('get_login');
 Route::post('/login','UsersController@login')->name('post_login');
 Route::get('/logout','UsersController@logout')->middleware('auth')->name('logout');
-Route::get('/members','UsersController@members')->middleware('auth')->name('members');
