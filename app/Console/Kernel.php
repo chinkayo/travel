@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\ScheduleCommand::class,
     ];
 
     /**
@@ -24,8 +24,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        //$schedule
+        //->command('command:run_schedule')
+        //->withoutOverlapping()
+        //->dailyAt('00:00');
+        $schedule->call(function () {
+            $date=date('Y-m-d');
+            DB::table('events')->whereDate('start_apply_date','=',$date);
+        })->daily();
+        //$schedule->call(function () {
+            //DB::table('recent_users')->delete();
+        //})->dailyAt('00:00');
     }
 
     /**

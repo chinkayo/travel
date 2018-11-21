@@ -114,7 +114,7 @@ class TravelController extends Controller
     public function show_detail(Request $request, $application_status_id)
     {
 
-        $events = Event::query()->where("application_status_id",$application_status_id)->paginate(3);
+        $events = Event::query()->where("application_status_id",$application_status_id)->paginate(5);
         return view('travel.detail',[
             'events'=>$events,
         ]);
@@ -124,7 +124,7 @@ class TravelController extends Controller
     public function showevent_statuses(Request $request)
     {
 
-        $events = Event::paginate(1);
+        $events = Event::paginate(3);
         return view('travel.event_statuses',[
             'events'=>$events,
         ]);
@@ -134,7 +134,7 @@ class TravelController extends Controller
     public function show_event_detail(Request $request)
     {
 
-        $events=Event::query()->where("id",15)->get();
+        $events=Event::query()->where("id",16)->get();
         return view('travel.eventdetail',[
             'events'=>$events,
         ]);

@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function index()
     {
         $events = Event::query()
-                        ->where('user_id','1')
+                        ->where('user_id','2')
                         ->where('application_status_id','2')
                         ->orderBy('start_apply_date','ASC')
                         ->take(4)
