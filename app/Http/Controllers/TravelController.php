@@ -130,14 +130,14 @@ class TravelController extends Controller
         ]);
     }
 
-
-    public function show_event_detail(Request $request)
+    public function apply_event_detail(Request $request)
     {
+        $eventmtbapplication = new EventMtbApplication;
+        $eventmtbapplication->user_id = Auth::id();
+        $eventmtbapplication->event_id = $request->event_id;
+        $eventmtbapplication->save();
 
-        $events=Event::query()->where("id",16)->get();
-        return view('travel.eventdetail',[
-            'events'=>$events,
-        ]);
+        return redirect(route("get_event_detail"));
     }
 
 

@@ -17,7 +17,7 @@ class StartApplication extends Mailable
      *
      * @return void
      */
-    public function __construct(user $user)
+    public function __construct(User $user)
     {
         $this->user=$user;
     }

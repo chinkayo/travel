@@ -12,7 +12,7 @@
 */
 
 Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');;
-Route::get('travel/eventdetail','TravelController@show_event_detail')->middleware('auth');
+Route::post('travel/eventdetail','TravelController@apply')->middleware('auth');
 Route::get('travel/eventform','TravelController@showform')->middleware('auth');
 Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
 Route::get('travel/event_statuses','TravelController@showevent_statuses')->middleware('auth');

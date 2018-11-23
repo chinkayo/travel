@@ -61,9 +61,7 @@
                 <div class="row">
                     <div class="col-5"></div>
                         <div class="col-5">
-                            <form>
-                                <a href="#"><button type="button" class="btn btn-default">申し込む</button></a>
-                            </form>
+                            @yield("content4")
                         </div>
                     <div class="col-2"></div>
                 </div>

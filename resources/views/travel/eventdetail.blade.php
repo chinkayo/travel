@@ -69,5 +69,19 @@
 <p>
     {{$event->event_detail}}
 </p>
-@endforeach
 @endsection
+
+@section("content4")
+
+    @if($event->event_status_id==3||$event->event_status_id==4||$event->event_status_id==5)
+
+    @else
+        <form action="" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="event_id" value="{{ $event->id }}">
+            <input type="submit" value="申し込む" class="btn btn-default">
+        </form>
+    @endif
+@endsection
+
+@endforeach

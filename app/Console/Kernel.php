@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\ScheduleCommand::class,
+        \App\Console\Commands\StartApplicationCommand::class,
     ];
 
     /**
@@ -24,14 +24,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //$schedule
-        //->command('command:run_schedule')
-        //->withoutOverlapping()
-        //->dailyAt('00:00');
-        $schedule->call(function () {
-            $date=date('Y-m-d');
-            DB::table('events')->whereDate('start_apply_date','=',$date);
-        })->daily();
+        $schedule
+        ->command('batch:start_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
+        $schedule
+        ->command('batch:finish_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
+        $schedule
+        ->command('batch:finish_capacity')
+        ->withoutOverlapping()
+        ->dailyAt('14:00');
+
+        $schedule
+        ->command('batch:gather_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
         //$schedule->call(function () {
             //DB::table('recent_users')->delete();
         //})->dailyAt('00:00');

@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\User;
 
-class Verification extends Mailable
+class FinshCapacity extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
@@ -17,7 +17,7 @@ class Verification extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user )
+    public function __construct(User $user)
     {
         $this->user=$user;
     }
@@ -29,6 +29,6 @@ class Verification extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.verification');
+        return $this->view('mails.finish_capacity');
     }
 }
