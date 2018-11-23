@@ -84,8 +84,7 @@ class TravelController extends Controller
             // TODO 現在登録機能が使えないので、仮のデータを使う。
             // 本番運用の時に、該当ロジックを変更してください。
             $event->user_id = 1;
-            $event->application_statuses_id = 1;
-
+            $event->application_status_id = 1;
             $event->title = $request->title;
             $event->location_id = $request->location;
             $event->event_type_id = $request->eventtype;
@@ -113,10 +112,10 @@ class TravelController extends Controller
     }
 
 
-    public function show_detail(Request $request, $application_statuses_id)
+    public function show_detail(Request $request, $application_status_id)
     {
 
-        $events = Event::query()->where("application_statuses_id",$application_statuses_id)->paginate(3);;
+        $events = Event::query()->where("application_status_id",$application_status_id)->paginate(3);;
         return view('travel.detail',[
             'events'=>$events,
         ]);

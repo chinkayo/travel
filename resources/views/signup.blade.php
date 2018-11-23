@@ -33,6 +33,9 @@
         <p>{{$errors->first('agreed')}}</p>
       @endif
     </label>
+    <label class="checkbox">
+      <input type="checkbox" name="mailmagazine">メールマガジンに登録。
+    </label>
       <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign up">
   </form>
 </div>
