@@ -7,6 +7,7 @@ use App\MailList;
 use App\MailMagazineHistory;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailMagazine;
+use Illuminate\Support\Carbon;
 
 class SendMailMagazine extends Command
 {
@@ -42,9 +43,20 @@ class SendMailMagazine extends Command
     public function handle()
     {
         $maillists = MailList::where('confirmed_at','!=','null')->get();
-        $mailmagazinehistory = MailMagazineHistory::where('sent_at','null')->get();
+        $mailmagazinehistory = MailMagazineHistory::where('sent_at','null')->first();
+        $id = $mailmagazinehistory->id;
         foreach ($maillists as $maillist) {
             Mail::to($maillist->email)->send(new MailMagazine($mailmagazinehistory));
+            $mailmagazinehistory = new MailMagazineHistory;
+            $mailmagazinehistory->mail_list_id = $maillist->id;
+            $mailmagazinehistory->subject = $mailmagazinehistory->subject;
+            $mailmagazinehistory->content = $mailmagazinehistory->content;
+            $mailmagazinehistory->sent_time = $mailmagazinehistory->sent_time;
+            $mailmagazinehistory->sent_time = Carbon::now();
+            $mailmagazinehistory->save();
         }
+        $mailmagazinehistory=MailMagazineHistory::find($id);
+        $mailmagazinehistory->sent_at = Carbon::now();
+        $mailmagazinehistory->save();
     }
 }

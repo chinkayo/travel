@@ -77,13 +77,17 @@ class UsersController extends Controller
             $user = User::where('token',$token)->first();
             $user->user_status_id = 2;
             $user->save();
-            return view('verified');
+            $a = 1;
         }
         
         if (MailList::where('token',$token)->exists()) {
             $maillist = MailList::where('token',$token)->first();
             $maillist->confirmed_at = Carbon::now();
             $maillist->save();
+            $a = 2;
+        }
+
+        if ($a==1 || $a==2) {
             return view('verified');
         }
     }

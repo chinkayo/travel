@@ -17,6 +17,8 @@ class CreateMailMagazineHistoriesTable extends Migration
             $table->charset='utf8';
             $table->collation='utf8_general_ci';
             $table->increments('id');
+            $table->integer('mail_list_id')->unsigned()-nullable();
+            $table->foreign('mail_list_id')->references('id')->on('mail_lists');
             $table->text('subject');
             $table->text('content');
             $table->time('send_time');
