@@ -26,6 +26,29 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('email:sendmailmagazine')
                  ->dailyAt('13:00');
+        $schedule
+        ->command('batch:start_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
+        $schedule
+        ->command('batch:finish_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
+        $schedule
+        ->command('batch:finish_capacity')
+        ->withoutOverlapping()
+        ->dailyAt('14:00');
+
+        $schedule
+        ->command('batch:gather_application')
+        ->withoutOverlapping()
+        ->dailyAt('00:00');
+
+        //$schedule->call(function () {
+            //DB::table('recent_users')->delete();
+        //})->dailyAt('00:00');
     }
 
     /**

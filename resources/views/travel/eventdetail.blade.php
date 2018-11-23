@@ -1,31 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>@yield('eventdetail')</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+@extends("layout.mypage.layout2")
+@foreach($events as $event)
 
+@section("content0")
+{{$event->title}}
+@endsection
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <style>
-      .one_staff {
-          margin: 5px;
-          padding: 5px;
-      }
+@section("content")
+    <img  src="{{ asset('storage/' . $event->image) }}" width="480" height="350">
+@endsection
 
-      th{text-align:center;}
-      h2{text-align:center;}
+@section("content2")
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th>イベント名</th>
+        <td>{{$event->title}}</td>
+    </tr>
+    <tr>
+        <th>目的地</th>
+        <td>{{ $event->location->area->value }} {{ $event->location->value }}</td>
+    </tr>
+    <tr>
+        <th>開催期間</th>
+        <td>{{$event->start_date}}～{{$event->finish_date}}</td>
+    </tr>
+    <tr>
+        <th>申し込み開始時間</th>
+        <td>{{$event->start_apply_date}}</td>
+    </tr>
+    <tr>
+        <th>申し込み終了時間</th>
+        <td>{{$event->deadline}}</td>
+    </tr>
+    <tr>
+        <th>募集状態</th>
+        <td>{{ $event->eventstatus->value }}</td>
+    </tr>
+    <tr>
+        <th>最小人数</th>
+        <td>{{$event->minimum}}</td>
+    </tr>
+    <tr>
+        <th>旅行会社</th>
+        <td>
+            @if($event->travel_company_flg==0)
+            <p>使用</p>
+            @else
+            <p>不使用</p>
+            @endif
+        </td>
+    </tr>
+    <tr>
+        <th>定員</th>
+        <td>{{$event->capacity}}</td>
+    </tr>
+    <tr>
+        <th>イベントタイプ</th>
+        <td>
+            {{ $event->eventtype->value }}
+        </td>
+    </tr>
+    </tbody>
+</table>
+@endsection
 
-    </style>
-</head>
-<body>
-    @yield('title','默认标题')
+@section("content3")
+<p>イベント詳細：</p>
+<p>
+    {{$event->event_detail}}
+</p>
+@endsection
 
-    @section('content')
-    默认的内容
-    @show
+@section("content4")
 
-</body>
-</html>
+    @if($event->event_status_id==3||$event->event_status_id==4||$event->event_status_id==5)
+
+    @else
+        <form action="" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="event_id" value="{{ $event->id }}">
+            <input type="submit" value="申し込む" class="btn btn-default">
+        </form>
+    @endif
+@endsection
+
+@endforeach

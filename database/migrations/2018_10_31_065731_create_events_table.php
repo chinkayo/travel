@@ -40,7 +40,7 @@ class CreateEventsTable extends Migration
             $table->integer('event_status_id')->unsigned();
             $table->foreign('event_status_id')->references('id')->on('mtb_event_statuses');
             $table->integer('application_status_id')->unsigned();
-            $table->foreign('application_status_id')->references('id')->on('events_mtb_applications');
+            $table->foreign('application_status_id')->references('id')->on('mtb_application_statuses');
             $table->timestamps();
             $table->softDeletes();
         });

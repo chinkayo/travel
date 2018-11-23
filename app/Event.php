@@ -41,13 +41,8 @@ class Event extends Model
        return $num;
     }
 
-    public function statuses()
-    {
-       $start_apply_date = Event::query()->whereDate('start_apply_date','<','2018-03-1')->get();
 
 
-       return $start_apply_date;
-    }
 
     public static function search_events(Request $request) 
     {

@@ -47,7 +47,7 @@
             border:1px solid #a1a1a1;
         	padding:10px 40px;
         	width:50px;
-            height:1100px;
+            height:1800px;
         	border-radius:5px;
         }
         .hr{ width:1150px;eight:1px;border:none;border-top:1px solid #C0C0C0;}

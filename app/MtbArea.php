@@ -9,7 +9,9 @@ class MtbArea extends Model
     protected $table = "mtb_areas";
     public function locations()
     {
-        return $this->hasMany("App\MtbLocation", "area_id");
+
+        return $this->hasMany(MtbLocation::class, "area_id");
     }
 
+        
 }

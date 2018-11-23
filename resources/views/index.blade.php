@@ -32,19 +32,19 @@
       <div class="text-center container">
         <h1 class="display-4 type-title">企画タイプ</h1>
         <p class="subtext-2">見たことのない色を、見に行こう</p>
-        <div class="text-center row margin-top"> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-venus fa-5x"></i></a></div> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-mountain fa-5x"></i></a></div> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-glass-martini fa-5x"></i></a></div> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-fire fa-5x"></i></a></div> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-globe-asia fa-5x"></i></a></div> 
-            <div class="col-lg-2"><a href="#"><i class="fa fa-leaf fa-5x"></i></a></div> 
+        <div class="text-center row margin-top">
+            <div class="col-lg-2"><a href="#"><i class="fa fa-venus fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-mountain fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-glass-martini fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-fire fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-globe-asia fa-5x"></i></a></div>
+            <div class="col-lg-2"><a href="#"><i class="fa fa-leaf fa-5x"></i></a></div>
         </div>
         <div class="text-center row">
           @foreach ($eventTypes as $eventType)
             <div class="col-lg-2"><a href="{{route('lists').'?keyword=&types%5B%5D='.$eventType->id}}">{{$eventType->value}}</a></div>
           @endforeach 
         </div>
-      </div> 
-    </div>    
+      </div>
+    </div>
 @endsection

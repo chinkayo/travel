@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('userdetail');
+Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');;
+Route::post('travel/eventdetail','TravelController@apply')->middleware('auth');
 Route::get('travel/eventform','TravelController@showform')->middleware('auth');
-Route::post('travel/insertsuccess','TravelController@insertform');
+Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
 Route::get('travel/event_statuses','TravelController@showevent_statuses')->middleware('auth');
 Route::get('travel/{application_status_id}','TravelController@show_detail')->middleware('auth')->name("show_detail_status");
 
-//from guo
 Route::get('/index','IndexController@index')->name('index');
 Route::get('/lists','IndexController@lists')->name('lists');
 Route::get('/signup','UsersController@signup')->name('get_signup');

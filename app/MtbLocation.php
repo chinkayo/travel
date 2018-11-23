@@ -8,11 +8,13 @@ class MtbLocation extends Model
 {
     protected $table = "mtb_locations";
     public function events()
-   {
-       return $this->hasMany("App\Event", "location_id");
-   }
-   public function area()
+
     {
-        return $this->belongsTo("App\MtbArea", "area_id");
+       return $this->hasMany(Event::class, "location_id");
+    }
+    public function area()
+    {
+        return $this->belongsTo(MtbArea::class, "area_id");
+
     }
 }

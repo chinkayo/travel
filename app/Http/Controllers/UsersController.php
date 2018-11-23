@@ -47,7 +47,7 @@ class UsersController extends Controller
             $validator = Validator::make($request->all(),$rules,$messages);
             if ($validator->fails()) {
                 return redirect(route('get_signup'))->withErrors($validator)->withInput();
-            }else{  
+            }else{
                 $user = new User;
                 $user->familyname = $request->familyname;
                 $user->givenname = $request->givenname;
@@ -110,11 +110,11 @@ class UsersController extends Controller
                 if (Auth::attempt(['email'=>$request->email,
                                    'password'=>$request->password,
                                    'user_status_id'=>2])) {
-                    return redirect()->route('userdetail');
+                    return redirect()->route('user_detail');
                 }else {
                     return redirect()->route('get_login');
                 }
-            
+
             }
         }
     }
