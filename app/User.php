@@ -24,5 +24,9 @@ class User extends Model implements Authenticatable
     {
         return $this->hasOne(MailList::class,'user_id');
     }
+    public function location()
+    {
+        return $this->belongsTo(MtbLocation::class,'location_id');
+    }
 
 }

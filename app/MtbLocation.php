@@ -17,4 +17,8 @@ class MtbLocation extends Model
         return $this->belongsTo(MtbArea::class, "area_id");
 
     }
+    public function users()
+    {
+        return $thsi->hasMany(User::class,'location_id');
+    }
 }
