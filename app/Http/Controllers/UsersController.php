@@ -27,6 +27,7 @@ class UsersController extends Controller
                 'email'=>'required|email|unique:users,email',
                 'password'=>'required|alpha_num|min:6|confirmed',
                 'password_confirmation'=>'required',
+                'location'=>'required|integer',
                 'agreed'=>'required'
             ];
 
@@ -41,6 +42,7 @@ class UsersController extends Controller
                 'password.min'=>'最小6桁を入力してください。',
                 'password.confirmed'=>'パスワード一致していません。',
                 'password_confirmation.required'=>'パスワード二回を入力してください。',
+                'location.integer'=>'都市を必ず選択してください。',
                 'agreed.required'=>'利用規則に同意してください。'
             ];
 
@@ -55,6 +57,7 @@ class UsersController extends Controller
                 $user->password = bcrypt($request->password);
                 $user->token = str_random(25);
                 $user->user_status_id = 1 ;
+                $user->location_id = $request->location;
                 $user->save();
                 $userid = $user->id;
                 $user = User::find($userid);

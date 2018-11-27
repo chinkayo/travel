@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('remember_token')->nullable();
             $table->integer('user_status_id')->unsigned();
             $table->foreign('user_status_id')->references('id')->on('mtb_user_statuses');
+            $table->integer('location_id')->unsigned();
+            $table->foreign('location_id')->references('id')->on('mtb_locations');
             $table->timestamps();
             $table->softDeletes();
         });

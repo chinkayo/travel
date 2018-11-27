@@ -29,7 +29,7 @@ $(document).ready(function(){
                 $('#location_select').find('option').remove();
 
                 var option = $('<option/>');
-                option.text("都道府県を選択してください。");
+                option.text("都市を選択してください。");
                 $('#location_select').append(option);
 
                 area_locations.forEach(function(element){
@@ -80,7 +80,10 @@ $(document).ready(function(){
     </select>
     <select name="location" id="location_select">
       <option>都市を選択してください。</option>  
-    </select>     
+    </select>
+    @if ($errors->has('location'))
+        <p>{{$errors->first('location')}}</p>
+    @endif     
     <label class="checkbox">
       <input type="checkbox" value="agreed" name="agreed"> 利用規則に同意します。
       @if ($errors->has('agreed'))
