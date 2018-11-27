@@ -40,8 +40,7 @@
                             </tr>
                             <tr>
                                 <th>現在の人数</th>
-                                <td>{{ $event->application_number() }}
-                                    </td>
+                                <td>{{ $event->application_number()}}</td>
                             </tr>
                             <tr>
                                 <th>イベント募集状態</th>

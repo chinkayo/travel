@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MailMagazineHistory;
 use Illuminate\Support\Facades\Validator;
+use App\MailMagazineContent;
 
 class AdminController extends Controller
 {
@@ -28,11 +28,11 @@ class AdminController extends Controller
             if ($validator->fails()) {
                 return redirect()->route('get_mailmagazine')->withErrors($validator)->withInput();
             }else {
-                $mailmagazinehistory = new MailMagazineHistory;
-                $mailmagazinehistory->subject = $request->subject;
-                $mailmagazinehistory->content = $request->message;
-                $mailmagazinehistory->send_time = $request->time;
-                $mailmagazinehistory->save();
+                $mailmagazinecontent = new MailMagazineContent;
+                $mailmagazinecontent->subject = $request->subject;
+                $mailmagazinecontent->content = $request->message;
+                $mailmagazinecontent->send_time = $request->time;
+                $mailmagazinecontent->save();
                 return '登録成功';
             }
         }

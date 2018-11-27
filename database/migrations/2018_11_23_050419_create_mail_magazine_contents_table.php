@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMailMagazineHistoriesTable extends Migration
+class CreateMailMagazineContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMailMagazineHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mail_magazine_histories', function (Blueprint $table) {
+        Schema::create('mail_magazine_contents', function (Blueprint $table) {
             $table->charset='utf8';
             $table->collation='utf8_general_ci';
             $table->increments('id');
-            $table->integer('mail_list_id')->unsigned()-nullable();
-            $table->foreign('mail_list_id')->references('id')->on('mail_lists');
             $table->text('subject');
             $table->text('content');
             $table->time('send_time');
@@ -35,6 +33,6 @@ class CreateMailMagazineHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mail_magazine_histories');
+        Schema::dropIfExists('mail_magazine_contents');
     }
 }

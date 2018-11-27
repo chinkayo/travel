@@ -29,10 +29,7 @@
               <div class="collapse navbar-collapse justify-content-end" id="nav-content">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">旅行先</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">企画一覧</a>
+                    <a class="nav-link" href="{{route('lists')}}">企画一覧</a>
                   </li>
                   @if (Auth::check())
                     <li class="nav-item">

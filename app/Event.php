@@ -30,9 +30,9 @@ class Event extends Model
     {
         return $this->belongsTo(MtbEventStatus::class,'event_status_id');
     }
-    public function applicationstatus()
+    public function related()
     {
-        return $this->belongsTo(MtbApplicationStatus::class,'application_status_id');
+        return $this->belongsToMany(MtbApplicationStatus::class,'events_mtb_applications','event_id','application_status_id');
     }
 
     public function application_number()

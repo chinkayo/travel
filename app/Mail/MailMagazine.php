@@ -8,20 +8,21 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\MailList;
 use App\MailMagazineHistory;
+use App\MailMagazineContent;
 
 class MailMagazine extends Mailable
 {
     use Queueable, SerializesModels;
-    public $mailmagazinehistroy;
+    public $mailmagazinecontent;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(MailMagazineHistory $mailmagazinehistroy)
+    public function __construct(MailMagazineContent $mailmagazinecontent)
     {
-        $this->mailmagazinehistroy = $mailmagazinehistroy;
+        $this->mailmagazinecontent = $mailmagazinecontent;
     }
 
     /**
