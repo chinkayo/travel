@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Console\Scheduling\Event;
 
 class EventMtbApplication extends Model
 {

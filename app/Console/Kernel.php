@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\StartApplicationCommand::class,
+        Commands\SendMailMagazine::class
     ];
 
     /**
@@ -24,6 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('email:sendmailmagazine')
+                 ->dailyAt('13:00');
         $schedule
         ->command('batch:start_application')
         ->withoutOverlapping()

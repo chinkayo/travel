@@ -6,20 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\User;
+use App\MailList;
+use App\MailMagazineHistory;
+use App\MailMagazineContent;
 
-class Verification extends Mailable
+class MailMagazine extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
+    public $mailmagazinecontent;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(MailMagazineContent $mailmagazinecontent)
     {
-        $this->user=$user;
+        $this->mailmagazinecontent = $mailmagazinecontent;
     }
 
     /**
@@ -29,6 +32,6 @@ class Verification extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.verification');
+        return $this->view('mails.mailmagazine');
     }
 }

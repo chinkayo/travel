@@ -29,10 +29,7 @@
               <div class="collapse navbar-collapse justify-content-end" id="nav-content">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">旅行先</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">企画一覧</a>
+                    <a class="nav-link" href="{{route('lists')}}">企画一覧</a>
                   </li>
                   @if (Auth::check())
                     <li class="nav-item">
@@ -68,13 +65,17 @@
                 <!-- Content -->
                 <h5 class="text-uppercase font-weight-bold">ニューズレター</h5>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae harum esse fugiat. Itaque, culpa?</p>
-                <form class="input-group" action="" method="POST">
-                    <input type="text" class="form-control form-control-sm" placeholder="Your email" aria-label="Your email" aria-describedby="basic-addon2">
+                <form class="input-group" action="{{route('newsletter')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="text" name="email" class="form-control form-control-sm" placeholder="Your email" aria-label="Your email" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <input class="btn btn-sm btn-outline-white" type="submit" value="Sign up">
                     </div>
                 </form>
-
+                @if ($errors->has('email'))
+                  <p>{{$errors->first('email')}}</p>
+                @endif
+        
               </div>
               <!-- Grid column -->
 

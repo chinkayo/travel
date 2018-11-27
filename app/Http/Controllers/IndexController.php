@@ -9,51 +9,41 @@ use App\MtbArea;
 use App\MtbEventStatus;
 use Illuminate\Support\Facades\Input;
 use App\MtbLocation;
+use App\MtbApplicationStatus;
 
 class IndexController extends Controller
 {
     public function index()
     {
         $events = Event::query()
-                        ->where('user_id','2')
-                        ->where('application_status_id','2')
+                        ->where('user_id','1')
                         ->orderBy('start_apply_date','ASC')
                         ->take(4)
                         ->get();
         $eventTypes = MtbEventType::all();
         return view('index',['events'=>$events,'eventTypes'=>$eventTypes]);
     }
-    public function lists()
+
+    public function lists(Request $request)
     {
-        $events = Event::query()
-                        ->where('application_status_id','2')
-                        ->paginate(2);
+        
+        // 検索条件のためのデータ準備
         $areas = MtbArea::all();
         $eventTypes = MtbEventType::all();
-        $eventStatuses = MtbEventStatus::query()
-                                        ->take(2)
-                                        ->get();
-        return view('lists',['areas'=>$areas,'eventTypes'=>$eventTypes,'eventStatuses'=>$eventStatuses,'events'=>$events]);
+        $eventStatuses = MtbEventStatus::get_public_statuses();
+
+        // 対象イベントを選択
+        $events = Event::search_events($request)->paginate(2);
+
+        return view('lists',
+            [
+                'areas'=>$areas,
+                'eventTypes'=>$eventTypes,
+                'eventStatuses'=>$eventStatuses,
+                'events'=>$events,
+                "request" => $request
+            ]
+        );
     }
 
-    public function search(Request $request)
-    {
-        if (Input::has('areas')) {
-            $area_ids=[];
-            $area_ids=$request->input('areas');
-            $locations = MtbLocation::query()->wherein('area_id',$area_ids)->get();
-            foreach ($locations as $location) {
-                echo $location->id;
-            }
-        }
-        if (Input::has('types')) {
-            $type_ids=[];
-            $type_ids=$request->input('types');
-        }
-        if (Input::has('statuses')) {
-            $status_ids=[];
-            $status_ids=$request->input('statuses');
-        }
-
-    }
 }

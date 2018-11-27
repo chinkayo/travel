@@ -103,7 +103,6 @@ class TravelController extends Controller
             $domain = strstr($path, 't');
             $event->image = $domain;
             $event->event_status_id = 1;
-            $event->application_status_id = 1;
             $event->save();
 
             return view('travel.insertsuccess');
@@ -115,7 +114,13 @@ class TravelController extends Controller
     public function show_detail(Request $request, $application_status_id)
     {
 
-        $events = Event::query()->where("application_status_id",$application_status_id)->paginate(5);
+        $eventsmtbapplications = EventMtbApplication::query()->where("user_id",Auth::id())->where('application_status_id',$application_status_id)->get();
+        $event_ids=array();
+        foreach ($eventsmtbapplications as $eventmtbapplication) {
+            $event_id = $eventmtbapplication->event_id;
+            $event_ids[] = $event_id;
+        }
+        $events = Event::query()->wherein('id',$event_ids)->paginate(5);
         return view('travel.detail',[
             'events'=>$events,
         ]);
@@ -125,9 +130,9 @@ class TravelController extends Controller
     public function showevent_statuses(Request $request)
     {
 
-        $events = Event::paginate(3);
+        $events = Event::where('user_id',Auth::id())->paginate(3);
         return view('travel.event_statuses',[
-            'events'=>$events,
+            'events'=>$events
         ]);
     }
 

@@ -19,12 +19,12 @@
           <a href="#"><img src="{{'storage/'.$event->image}}" alt="{{$event->title}}"></a>
           <p>{{$event->title}}</p>
           <p>{{$event->start_date}}から{{$event->finish_date}}まで</p>
-          <p>{{$event->eventStatus->value}}</p>
+          <p>{{$event->eventstatus->value}}</p>
         </div>
         @endforeach
       </div>
       <div class="row center">
-        <a class="btn btn-outline-dark">もっと見る</a>
+        <a class="btn btn-outline-dark" href="{{route('lists')}}">もっと見る</a>
       </div>
     </div>
 
@@ -33,17 +33,17 @@
         <h1 class="display-4 type-title">企画タイプ</h1>
         <p class="subtext-2">見たことのない色を、見に行こう</p>
         <div class="text-center row margin-top">
-            <div class="col-lg-2"><a href="#"><i class="fa fa-venus fa-5x"></i></a></div>
-            <div class="col-lg-2"><a href="#"><i class="fa fa-mountain fa-5x"></i></a></div>
-            <div class="col-lg-2"><a href="#"><i class="fa fa-glass-martini fa-5x"></i></a></div>
-            <div class="col-lg-2"><a href="#"><i class="fa fa-fire fa-5x"></i></a></div>
-            <div class="col-lg-2"><a href="#"><i class="fa fa-globe-asia fa-5x"></i></a></div>
-            <div class="col-lg-2"><a href="#"><i class="fa fa-leaf fa-5x"></i></a></div>
+            <div class="col-lg-2"><i class="fa fa-venus fa-5x"></i></div>
+            <div class="col-lg-2"><i class="fa fa-mountain fa-5x"></i></div>
+            <div class="col-lg-2"><i class="fa fa-glass-martini fa-5x"></i></div>
+            <div class="col-lg-2"><i class="fa fa-fire fa-5x"></i></div>
+            <div class="col-lg-2"><i class="fa fa-globe-asia fa-5x"></i></div>
+            <div class="col-lg-2"><i class="fa fa-leaf fa-5x"></i></div>
         </div>
         <div class="text-center row">
           @foreach ($eventTypes as $eventType)
-            <div class="col-lg-2"><a href="#">{{$eventType->value}}</a></div>
-          @endforeach
+            <div class="col-lg-2"><a href="{{route('lists').'?keyword=&types%5B%5D='.$eventType->id}}">{{$eventType->value}}</a></div>
+          @endforeach 
         </div>
       </div>
     </div>

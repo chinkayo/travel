@@ -10,6 +10,9 @@ use App\Mail\Verification;
 use App\User;
 use Validator;
 use Redirect;
+use App\MailList;
+use Illuminate\Support\Carbon;
+use App\Mail\MailMagazineVerification;
 
 class UsersController extends Controller
 {
@@ -55,6 +58,12 @@ class UsersController extends Controller
                 $user->save();
                 $userid = $user->id;
                 $user = User::find($userid);
+                if ($request->mailmagazine) {
+                    $maillist = new MailList;
+                    $maillist->user_id = $userid;
+                    $maillist->token = $user->token;
+                    $maillist->save();
+                }
 
                 Mail::to($user->email)->send(new Verification($user));
                 return view('to_verification');
@@ -64,11 +73,23 @@ class UsersController extends Controller
 
     public function verify($token)
     {
-        $user = User::where('token',$token)->firstOrFail();
-        $user->user_status_id = 2;
-        $user->save();
+        if (User::where('token',$token)->exists()) {
+            $user = User::where('token',$token)->first();
+            $user->user_status_id = 2;
+            $user->save();
+            $a = 1;
+        }
+        
+        if (MailList::where('token',$token)->exists()) {
+            $maillist = MailList::where('token',$token)->first();
+            $maillist->confirmed_at = Carbon::now();
+            $maillist->save();
+            $a = 2;
+        }
 
-        return view('verified');
+        if ($a==1 || $a==2) {
+            return view('verified');
+        }
     }
 
     public function login(Request $request)
@@ -106,6 +127,36 @@ class UsersController extends Controller
     {
         Auth::logout();
         return redirect()->route('get_login');
+    }
+
+    public function newsletter(Request $request)
+    {
+        $rules = [
+            "email"=>"required|email"
+        ];
+        $messages = [
+            "email.required"=>"入力してください。",
+            "email.email"=>"正しい形式でご入力してください。"
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+            //バリデーション成功の場合
+            if (User::where('email',$request->email)->exists()||MailList::where('email',$request->email)->exists()) {
+                return view('verified');
+            }else{
+                $maillist = new MailList;
+                $maillist->email = $request->email;
+                $maillist->token = str_random(25);
+                $maillist->save();
+                $id = $maillist->id;
+                $maillist = MailList::find($id);
+
+                Mail::to($maillist->email)->send(new MailMagazineVerification($maillist));
+                return view('to_verification');
+            }
+        }
     }
 
 

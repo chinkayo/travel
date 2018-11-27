@@ -20,4 +20,9 @@ class User extends Model implements Authenticatable
         return $this->hasMany("App\EventMtbApplication", "user_id");
     }
 
+    public function mailList()
+    {
+        return $this->hasOne(MailList::class,'user_id');
+    }
+
 }
