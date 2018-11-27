@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');;
-Route::post('travel/eventdetail','TravelController@apply')->middleware('auth');
+Route::get('travel/userdetail','TravelController@index')->middleware('auth')->name('user_detail');
+Route::get('travel/eventdetail/{event_id}','TravelController@show_event_detail')->name("get_event_detail")->middleware('auth');
+Route::post('travel/apply_event','TravelController@apply_event')->name("post_apply_event")->middleware('auth');
 Route::get('travel/eventform','TravelController@showform')->middleware('auth');
 Route::post('travel/insertsuccess','TravelController@insertform')->middleware('auth');
 Route::get('travel/event_statuses','TravelController@showevent_statuses')->middleware('auth');
 Route::get('travel/{application_status_id}','TravelController@show_detail')->middleware('auth')->name("show_detail_status");
+Route::get('travel/peoplestatus/{event_id}','TravelController@showe_people_status')->middleware('auth')->name("showe_people_status");
 
 
 Route::get('/index','IndexController@index')->name('index');

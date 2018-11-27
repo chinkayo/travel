@@ -39,7 +39,7 @@
                                 <td>{{$event->capacity}}</td>
                             </tr>
                             <tr>
-                                <th><a href="{{ route('showe_people_status', ['event_id' => $event->id]) }}">現在の人数</a></th>
+                                <th>現在の人数</th>
                                 <td>
                                     {{ $event->application_number() }}人</br>
                                     審査待ち：{{$event->application_wait_number()}}人</br>
@@ -51,6 +51,7 @@
                                 <th>イベント募集状態</th>
                                 <td>
                                     {{ $event->eventstatus->value }}
+
                                 </td>
                             </tr>
                             </tbody>
@@ -60,8 +61,29 @@
             <div class="col-lg-0">
             </div>
             <hr id="hr2"class="hr"/></br>
+
+            @foreach($eventmtbapplications as $eventmtbapplication)
+            @if($eventmtbapplication->application_status_id == 1)
+            {{$eventmtbapplication->application_status->value}}:</br>
+            {{$eventmtbapplication->user->familyname}}</br>
+            {{$eventmtbapplication->user->email}}</br>
+            @endif
+
+            @if($eventmtbapplication->application_status_id == 2)
+            {{$eventmtbapplication->application_status->value}}:</br>
+            {{$eventmtbapplication->user->familyname}}</br>
+            {{$eventmtbapplication->user->email}}</br>
+            @endif
+
+            @if($eventmtbapplication->application_status_id == 3)
+            {{$eventmtbapplication->application_status->value}}:</br>
+            {{$eventmtbapplication->user->familyname}}</br>
+            {{$eventmtbapplication->user->email}}</br>
+            @endif
+            @endforeach
+
         </div>@endforeach
-        {{ $events->links() }}
 </div>
+
 
 @endsection

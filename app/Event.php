@@ -40,7 +40,23 @@ class Event extends Model
        return $num;
     }
 
+    public function application_wait_number()
+    {
+       $num = EventMtbApplication::query()->where("event_id",$this->id)->where("application_status_id",MtbApplicationStatus::CHECK_WAIT)->count();
+       return $num;
+    }
 
+    public function application_success_number()
+    {
+       $num = EventMtbApplication::query()->where("event_id",$this->id)->where("application_status_id",MtbApplicationStatus::CHECK_PASS)->count();
+       return $num;
+    }
+
+    public function application_fail_number()
+    {
+       $num = EventMtbApplication::query()->where("event_id",$this->id)->where("application_status_id",MtbApplicationStatus::CHECK_FAIL)->count();
+       return $num;
+    }
 
 
 }

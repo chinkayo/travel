@@ -2,6 +2,57 @@
 
 @section("content")
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+
+$(document).ready(function(){
+
+    $.get("{{ route('get_api_areas') }}",function(data,status){
+        if(status == "success") {
+            var area_locations = data;
+
+            area_locations.forEach(function(element) {
+                var area_id = element.id;
+                var area_name = element.area;
+
+                var option = $('<option/>');
+                option.attr({ 'value': area_id }).text(area_name);
+                $('#area_select').append(option);
+            });
+
+            $("#area_select").change(function(){
+
+                var selected_id = this.value;
+
+                $('#location_select').find('option').remove();
+
+                var option = $('<option/>');
+                option.text("都道府県を選択してください。");
+                $('#location_select').append(option);
+
+                area_locations.forEach(function(element){
+                    if(element.id == selected_id) {
+                        var locations = element.locations;
+
+                        locations.forEach(function(location_element){
+                            var option = $('<option/>');
+                            option.attr({ 'value': location_element.id }).text(location_element.location);
+                            $('#location_select').append(option);
+                        });
+                    }
+                });
+
+            });
+        }
+    });
+});
+
+
+</script>
+
 @if(count($errors)>0)
     <p>入力に問題があります。再入力してください。</p>
 @endif
@@ -31,11 +82,8 @@
                 <P>area＊</P>
             </div>
             <div class="col-lg-5">
-                    <select name="area">
+                    <select name="area" id="area_select">
                         <option>地域を選択</option>
-                       @foreach($mtb_areas as $mtb_area)
-                       <option value="{{ $mtb_area->id }}">{{ $mtb_area->value }}</option>
-                       @endforeach
                    </select>
             </div>
             <div class="col-lg-3"></div>
@@ -54,15 +102,8 @@
                     <P>location＊</P>
                 </div>
                 <div class="col-lg-5">
-                   <select name="location">
+                   <select name="location" id="location_select">
                        <option>都道府県を選択</option>
-                       @foreach($mtb_locations as $mtb_location)
-                       <option value="{{ $mtb_location->id }}"
-                           @if($mtb_location->id == old('location'))
-                           selected
-                           @endif
-                           >{{ $mtb_location->value }}</option>
-                       @endforeach
                    </select>
                 </div>
                 <div class="col-lg-3"></div>
@@ -176,7 +217,6 @@
                 <div class="col-lg-3"></div>
           </div>
     </div>
-
     @if($errors->has('quantity'))
 　           <p>ERROR:{{$errors->first('quantity')}}</p>
     @endif

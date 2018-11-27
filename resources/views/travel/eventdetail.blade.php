@@ -73,14 +73,17 @@
 
 @section("content4")
 
-    @if($event->event_status_id==3||$event->event_status_id==4||$event->event_status_id==5)
-
+    @if($event->event_status_id==1||$event->event_status_id==3||$event->event_status_id==4||$event->event_status_id==5)
     @else
-        <form action="" method="post">
-            {{ csrf_field() }}
-            <input type="hidden" name="event_id" value="{{ $event->id }}">
-            <input type="submit" value="申し込む" class="btn btn-default">
-        </form>
+        @if($event_mtb_application)
+            {{ $event_mtb_application->application_status->value }}
+        @else
+            <form action="{{ route('post_apply_event') }}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="event_id" value="{{ $event->id }}">
+                <input type="submit" value="申し込む" class="btn btn-default">
+            </form>
+        @endif
     @endif
 @endsection
 

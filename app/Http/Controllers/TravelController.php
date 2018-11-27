@@ -16,6 +16,7 @@ use App\MtbArea;
 use App\MtbLocation;
 use App\MtbEventType;
 use App\EventMtbApplication;
+use App\User;
 
 
 class TravelController extends Controller
@@ -130,15 +131,61 @@ class TravelController extends Controller
         ]);
     }
 
-    public function apply_event_detail(Request $request)
-    {
-        $eventmtbapplication = new EventMtbApplication;
-        $eventmtbapplication->user_id = Auth::id();
-        $eventmtbapplication->event_id = $request->event_id;
-        $eventmtbapplication->save();
 
-        return redirect(route("get_event_detail"));
+    public function show_event_detail(Request $request, $event_id)
+    {
+
+        $events=Event::query()->where("id",$event_id)->get();
+
+        $event_mtb_application = EventMtbApplication::query()
+            ->where("event_id" , $event_id)
+            ->where("user_id", Auth::id())
+            ->first();
+
+
+        return view('travel.eventdetail',[
+            'events'=>$events,
+            "event_mtb_application" => $event_mtb_application
+        ]);
     }
 
+    public function apply_event(Request $request)
+    {
+        $eventmtbapplication = new EventMtbApplication;
+
+        $event = Event::find($request->event_id);
+        if($event->event_status_id == 2) {
+            $eventmtbapplication->user_id = Auth::id();
+            $eventmtbapplication->event_id = $request->event_id;
+            $eventmtbapplication->application_status_id = 1;
+            $eventmtbapplication->save();
+
+            if($event->capacity = $eventmtbapplication->count()){
+                $event->event_status_id = 3;
+                $event->save();
+            }
+        }
+        return redirect(route("get_event_detail", ["event_id" => $request->event_id]));
+    }
+
+    public function showe_people_status(Request $request,$event_id)
+    {
+        $events=Event::query()->where("id",$event_id)->get();
+        $eventmtbapplications= EventMtbApplication::query()->where("event_id" , $event_id)->get();
+        $users=array();
+        foreach($eventmtbapplications as $eventmtbapplication){
+            $user= User::query()->where("id" , $eventmtbapplication->user_id)->get();
+            $users[]=$user;
+        }
+
+        return view('travel.peoplestatus',[
+            'eventmtbapplications'=>$eventmtbapplications,
+            'users'=>$users,
+            'events'=>$events,
+        ]);
+    }
+
+
+    
 
 }

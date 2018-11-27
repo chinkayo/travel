@@ -7,4 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class EventMtbApplication extends Model
 {
     protected $table = "events_mtb_applications";
+
+    public function application_status()
+    {
+        return $this->belongsTo("App\MtbApplicationStatus", "application_status_id");
+    }
+
+    public function user()
+    {
+        return $this->belongsTo("App\User", "user_id");
+    }
 }
