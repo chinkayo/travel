@@ -44,8 +44,8 @@ class TravelController extends Controller
         $rules=[
             'title'=>'required|max:30',
             "detail" => "required",
-            'area'=>'required',
-            'location'=>'required',
+            'area'=>'required|integer',
+            'location'=>'required|integer',
             'eventtype'=>'required',
             'quantity'=>'required|numeric|between:1,100',
             'minquantity'=>'required|numeric|between:1,100',
@@ -57,8 +57,8 @@ class TravelController extends Controller
         $messages=[
             'title.required'=>'タイトルを必ず入力してください。',
             "detail.required" => "イベント詳細を入力してください。",
-            'area.required'=>'選択してください。',
-            'location.required'=>'選択してください。',
+            'area.integer'=>'選択してください。',
+            'location.integer'=>'選択してください。',
             'eventtype.required'=>'選択してください。',
             'quantity.required'=>'入力してください。',
             'quantity.numeric'=>'数字を入力してください。',
