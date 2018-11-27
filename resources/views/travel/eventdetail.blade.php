@@ -67,7 +67,7 @@
 @section("content3")
 <p>イベント詳細：</p>
 <p>
-    {{$event->event_detail}}
+    {!!nl2br($event->event_detail)!!}
 </p>
 @endsection
 

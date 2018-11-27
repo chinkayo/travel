@@ -54,7 +54,7 @@
                   <p>{{$event->eventType->value}}</p>
                   <p>{{$event->eventStatus->value}}</p>
                   <ul class="actions">
-                    <li><a href="#" class="button alt">Details</a></li>
+                    <li><a href="{{route('get_event_detail',["event_id"=>$event->id])}}" class="button alt">Details</a></li>
                   </ul>
                 </div>
               </div>

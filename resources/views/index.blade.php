@@ -16,7 +16,7 @@
       <div class="row">
         @foreach ($events as $event)
         <div class="col-lg-3 center">
-          <a href="#"><img src="{{'storage/'.$event->image}}" alt="{{$event->title}}"></a>
+          <a href="{{route('get_event_detail',["event_id"=>$event->id])}}"><img src="{{'storage/'.$event->image}}" alt="{{$event->title}}"></a>
           <p>{{$event->title}}</p>
           <p>{{$event->start_date}}から{{$event->finish_date}}まで</p>
           <p>{{$event->eventstatus->value}}</p>
